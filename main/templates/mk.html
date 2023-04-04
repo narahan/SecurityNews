@@ -1,0 +1,68 @@
+<DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>매일경제 증권</title>
+
+	<!-- CSS -->
+	<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='css/lib/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet">
+
+
+	<!-- js -->
+	<!-- <script src="{{ url_for('static', filename='script.js') }}" > </script> -->
+	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+	
+
+</head>
+<!--<body onload=init();>-->
+<body>
+	<!--<script type = "text/javascript" src = "{{ url_for('static', filename = 'js/lib/jquery-1.11.3.min.js') }}" ></link> 
+	<script type = "text/javascript" src = "{{ url_for('static', filename = 'js/lib/jquery-ui.min.js') }}" ></script>-->
+	
+	<div id="wrap">
+		<div id="nav">
+			<div class="tab" type="boan" sel="on"><div class="test"><a href="/mk"></a></div>매일경제 증권</div>
+			<div class="tab" type="boan" sel="off"><div class="test"><a href="/boan"></a></div>보안뉴스</div>
+			<div class="tab" type="daily" sel="off"><a href="/daily">데일리시큐</div>
+			
+			<!--
+				<a href="/boan"> 
+			<div class="tab" type="boan" sel="on"> 보안뉴스</div>
+			<div class="tab" type="daily" sel="off" ><a href="/daily">데일리시큐</div>
+			-->
+		</div>
+		<div id="content">
+			<div id="inner_content">
+				<div class="t_header">
+					<div class="tr">
+						<div class="th">번호</div>
+						<div class="th">날짜</div>
+						<div class="th">제목</div>
+					</div>
+				</div>
+				<div class="t_body">
+					{% for idx in data %}
+						<div class="tr" url="{{ idx.url }}">
+							<div class="td" >{{ idx.num }}</div>
+							<div class="td">{{ idx.date }}</div>
+							<div class="td">{{ idx.title }}</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	
+	
+	
+	<!--스크롤 파일 없음-->
+	<script type = "text/javascript" src = "{{ url_for('static', filename = 'js/lib/jquery.mCustomScrollbar.js') }}" ></script>
+	<script type = "text/javascript" src = "{{ url_for('static', filename = 'js/main.js') }}" ></script>
+</body>
+
+</html>
