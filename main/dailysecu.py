@@ -27,7 +27,7 @@ b = f.read()
 soup = bss(b, 'html.parser')
 
 divs = soup.find_all('div',{'class': 'list-block'})
-
+# print('divs>>>', divs)
 
 
 
@@ -37,19 +37,14 @@ def getDailyData():
 	num = 0
 	for i in divs:
 		f = {}
-		# print('divs>>>', divs)
 		title = i.find('div', {'class' : 'list-titles'})
 		title = title.string
 
 		url = i.find('a')['href']
 		# url = base_url + url
 
-		
 		# ex) <span class="list-dated">이슈 | 길민권  기자 | 2019.08.12 12:02</span>
 		date = i.find_all('div', {'class': 'list-dated'})[0]
-		
-
-
 		date = date.string
 		date = date.string.partition('|')[2]
 		date = date.partition('|')[2]
@@ -72,7 +67,7 @@ def getDailyData():
 			
 
 
-# getDailyData()
+getDailyData()
 
 
 

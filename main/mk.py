@@ -51,43 +51,65 @@ soup = bss(b, 'html.parser')
 
 
 
-# divs = soup.find_all('div', { 'id': 'news_area' })
-divs = soup.find_all('div', {'class' : 'news_node'})
+# divs = soup.find_all('li', {'class' : 'news_node'})
+divs = soup.select('li[data-li]')
+# divs = soup.find_all('div', {'class' : 'news_ttl'})
 
 # title, url, number 가져오기
 print(divs)
 
 file_data = []  
 
-def getBoanData():
+def getMkData():
 	num = 0
 	for i in divs:
 		f = {}
-		# title = i.find_all('span', {'class' : 'news_txt'})
-		title = i.find_all('span')[0]
+		title = i.find('h3', {'class' : 'news_ttl'})
 		title = title.string
+	
 
-		date = i.find_all('span')[1]
-		date = date.string
-		date = date.split('|')[1]
-		date = date.replace(' ','',3)
-		date = date.replace('년','-')
-		date = date.replace('월','-')
-		date = date.replace('일','')
+		# <li class="news_node">
+		# <a class="news_item" href="https://www.mk.co.kr/news/economy/10703567">
+		# <em class="num c_point">10</em>
+		# <h3 class="news_ttl">[단독] 다야니家에 패배했던 韓 236억 추가로 물어줄 판</h3>   
+		# </a>
+		# </li>
+
+
+		# date = i.find_all('span')[1]
+		# date = date.string
+		# date = date.split('|')[1]
+		# date = date.replace(' ','',3)
+		# date = date.replace('년','-')
+		# date = date.replace('월','-')
+		# date = date.replace('일','')
+
+
+		# date = i.find("div", "time_area")
+		# date = i.find_all('span')[0]
+
+		# <span>
+		# 04.04<br/>
+		# 2023
+		# </span>
+		
 		
 		# /media/view.asp?idx=85672&page=1&mkind=1&kind=2
+		
+		# url = i.find_all('a', {'class' : 'news_item'})
 		url = i.find('a')['href']
+		# print(url)
 
-		url = base_url + url
+		# url = base_url + url
 		num += 1
 		
 		# 뉴스 작성 날짜 노출 결정하기
 		f['num'] = num
 		f['title'] = title
-		f['date'] = date
+		# f['date'] = date
 		f['url'] = url
 		
 		file_data.append(f)
 	return file_data
 
-getBoanData()
+getMkData()

@@ -17,26 +17,14 @@
 	
 
 </head>
-{% comment %} <body onload=init();> {% endcomment %}
 <body>
-	<!--<script type = "text/javascript" src = "{{ url_for('static', filename = 'js/lib/jquery-1.11.3.min.js') }}" ></link> 
-	<script type = "text/javascript" src = "{{ url_for('static', filename = 'js/lib/jquery-ui.min.js') }}" ></script>-->
 	
 	<div id="wrap">
 		<div id="nav">
-			<div class="tab" type="boan" sel="on">
-				<div class="test">
-					<a href="/boan"></a>
-				</div>
-				보안뉴스
-			</div>
-			<div class="tab" type="daily" sel="off"><a href="/daily">데일리시큐</div>
+			<div class="tab" type="boan" sel="off">매일경제 증권</div>
+			<div class="tab" type="boan" sel="on">보안뉴스</div>
+			<div class="tab" type="daily" sel="off">데일리시큐</div>
 			
-			<!--
-				<a href="/boan"> 
-			<div class="tab" type="boan" sel="on"> 보안뉴스</div>
-			<div class="tab" type="daily" sel="off" ><a href="/daily">데일리시큐</div>
-			-->
 		</div>
 		<div id="content">
 			<div id="inner_content">
@@ -60,14 +48,9 @@
 		</div>
 	</div>
 	
-
-	
-	
-	
 	<!--스크롤 파일 없음-->
 	<script type = "text/javascript" src = "{{ url_for('static', filename = 'js/lib/jquery.mCustomScrollbar.js') }}" ></script>
-			
-	<script type = "text/javascript" src = "{{ url_for('static', filename = 'js/main.js') }}" ></script>
+	<!--<script type = "text/javascript" src = "{{ url_for('static', filename = 'js/main.js') }}" ></script>-->
 </body>
 
 </html>

@@ -85,7 +85,7 @@ def getBoanData():
 		f['url'] = url
 		
 		file_data.append(f)
-		print('file_data>>>', f)
+		# print('file_data>>>', f)
 	return file_data
 
 getBoanData()
